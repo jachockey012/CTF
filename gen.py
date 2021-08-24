@@ -41,7 +41,7 @@ def encode_flag(flag):
 	return(encoded_flag)
 
 def gen_packets(src, dest, flag):
-	ipPacket = IP(TTL=64)
+	ipPacket = IP()
 	ipPacket.dst= dest
 	ipPacket.src= src
 	
