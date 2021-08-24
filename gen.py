@@ -9,7 +9,6 @@
 
 
 from scapy.all import *
-from random import randrange
 
 # Dictionary representing the morse code chart
 morse = { 'A':'.-', 'B':'-...',
