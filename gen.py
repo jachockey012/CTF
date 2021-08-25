@@ -9,6 +9,7 @@
 
 
 from scapy.all import *
+import time
 
 # Dictionary representing the morse code chart
 morse = { 'A':'.-', 'B':'-...',
@@ -49,24 +50,23 @@ def gen_packets(src, dest, flag):
 	This loop will set the flags in the IP header based off moese code
 	the flags look like this.
 	4   2 
-	E + DF 
+	E + DF
 	
 	So for a char('J') we will see the morse ".---"
-	This means 4 packets with the flags of 4,5,5,5
+	This means 4 packets with the flags of 2,4,4,4
 	or E, E+MF, E+MF, E+MF
-
-	.--- .- -.- . -.-. --- -.-- -. .
 	'''
 	for i in flag:
 		if i == '.':
-			#4
-			ipPacket.flag = 2
+			#2 DF
+			ipPacket.flags = 2
 		if i == '-':
-			#5
-			ipPacket.flag = 4
+			#4 E
+			ipPacket.flags = 4
 		if i == ' ':
-			#6
-			ipPacket.flag = 6
+			#6 E+DF
+			ipPacket.flags = 6
+		time.sleep(.2)
 		send(ipPacket/ICMP())
 
 
