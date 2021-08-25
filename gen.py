@@ -48,20 +48,22 @@ def gen_packets(src, dest, flag):
 	'''
 	This loop will set the flags in the IP header based off moese code
 	the flags look like this.
-	4   2    1 
-	E + DF + MF
+	4   2 
+	E + DF 
 	
 	So for a char('J') we will see the morse ".---"
 	This means 4 packets with the flags of 4,5,5,5
 	or E, E+MF, E+MF, E+MF
+
+	.--- .- -.- . -.-. --- -.-- -. .
 	'''
 	for i in flag:
 		if i == '.':
 			#4
-			ipPacket.flag = 4
+			ipPacket.flag = 2
 		if i == '-':
 			#5
-			ipPacket.flag = 5
+			ipPacket.flag = 4
 		if i == ' ':
 			#6
 			ipPacket.flag = 6
@@ -77,9 +79,9 @@ if __name__ == '__main__':
 	For the flag I am assuming all CAPITAL with no space for simplicity
 	it was the first morse dict I found on google
 	'''
-	sourceIP = '127.0.0.1'
-	destIP = '127.0.0.1'
-	flag = "YOURFLAG"
+	sourceIP = '10.26.0.33'
+	destIP = '10.26.0.1'
+	flag = "SOS"
 	flag_encoded = encode_flag(flag)
 	gen_packets(sourceIP,destIP, flag_encoded)
 	print("Done")
