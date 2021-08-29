@@ -12,13 +12,20 @@ from scapy.all import *
 import time
 
 packets = rdpcap('sos_icmp.pcapng')
-flag = ''
+flag1 = ''
+
+# Because we know there are only 3 possible combinitations of 
+# flags lets loop through them all decode and see what is right
+
 for packet in packets:
 	if packet.haslayer(ICMP) and packet.payload.type == 8:
 		if packet.flags == 'DF':
-			flag += '.'
+			flag1 += '.'
 		if packet.flags == 'DF+evil':
-			flag += ' '
+			flag1 += ' '
 		if packet.flags == 'evil':
-			flag += '-'
+			flag1 += '-'
 print(flag)
+
+'''
+
