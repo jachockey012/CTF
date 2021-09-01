@@ -1,4 +1,4 @@
-Running `solve.py` on dotdash pcap will return:
+Running `solve.py` on `dotdash.pcapng` pcap will return:
 `-.-. - ..-. -.--. -.. --- - -....- -.. .- ... .... -....- ..-. - .-- -.--.-`
 
 If you put that in https://morsecode.world/international/translator.html
