@@ -9,8 +9,8 @@ The script (`gen.py`) can be used to create a flag. You need to change some Vars
 
 	We set the flags in the IP header based off moese code
 	the flags look like this.
-	4   2 
-	E + DF
+	4   2  6
+	E + DF Space
 	
 	So for a char('J') we will see the morse ".---"
 	This means 4 packets with the flags of 2,4,4,4
